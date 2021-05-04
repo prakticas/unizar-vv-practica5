@@ -133,6 +133,14 @@ public class InventoryTest {
     //Hector
 
     //Iñigo
+    @Test
+    public void Backstage_limit_valor_9(){
+        Item backStagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 1, 25);
+        Inventory inventory = createInventory(backStagePass);
+        inventory.updateQuality();
+        assertEquals(28, backStagePass.getQuality());
+    }
+
 
 
 }
