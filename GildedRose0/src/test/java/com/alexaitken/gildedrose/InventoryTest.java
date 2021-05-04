@@ -124,8 +124,29 @@ public class InventoryTest {
     }
     //Ibon
     @Test
-    public void should_increase_the_quality_of_aged_brie_as_it_gets_older2() {
+    public void should_increase_the_quality_of_aged_brie_as_it_gets_older_v2() {
         Item agedBrie = new Item("Aged Brie", -8, 25);
+        Inventory inventory = createInventory(agedBrie);
+        inventory.updateQuality();
+        assertEquals(27, agedBrie.getQuality());
+    }
+    @Test
+    public void should_not_increase_the_quality_of_aged_brie_over_50_v2() {
+        Item agedBrie = new Item("Aged Brie", -8, 50);
+        Inventory inventory = createInventory(agedBrie);
+        inventory.updateQuality();
+        assertEquals(50, agedBrie.getQuality());
+    }
+    @Test
+    public void should_increase_the_quality_of_aged_brie_to_50() {
+        Item agedBrie = new Item("Aged Brie", -8, 49);
+        Inventory inventory = createInventory(agedBrie);
+        inventory.updateQuality();
+        assertEquals(50, agedBrie.getQuality());
+    }
+    @Test
+    public void should_increase_the_quality_of_aged_brie() {
+        Item agedBrie = new Item("Aged Brie", 0, 25);
         Inventory inventory = createInventory(agedBrie);
         inventory.updateQuality();
         assertEquals(27, agedBrie.getQuality());
