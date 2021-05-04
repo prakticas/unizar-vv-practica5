@@ -78,6 +78,7 @@ public class InventoryTest {
         assertEquals(50, agedBrie.getQuality());
     }
 
+
     @Test
     public void should_lower_backstage_passes_to_zero_quality_once_concert_has_happened() {
         Item backStagePass = new Item("Backstage passes to a TAFKAL80ETC concert", -1, 20);
@@ -121,4 +122,17 @@ public class InventoryTest {
         assertEquals(50, backStagePass10DaysAway.getQuality());
         assertEquals(50, backStagePass5DaysAway.getQuality());
     }
+    //Ibon
+    @Test
+    public void should_increase_the_quality_of_aged_brie_as_it_gets_older2() {
+        Item agedBrie = new Item("Aged Brie", -8, 25);
+        Inventory inventory = createInventory(agedBrie);
+        inventory.updateQuality();
+        assertEquals(27, agedBrie.getQuality());
+    }
+    //Hector
+
+    //Iñigo
+
+
 }
