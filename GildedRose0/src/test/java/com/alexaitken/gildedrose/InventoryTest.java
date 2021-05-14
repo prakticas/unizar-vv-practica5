@@ -153,6 +153,54 @@ public class InventoryTest {
     }
     //Hector
 
+    //Hacer que se cubran el 100% de los casos
+    @Test
+    public void new_Name_is_set(){
+        Item agedBrie = new Item("Aged Brie", 1, 25);
+        agedBrie.setName("Queso anyejo");
+        assertEquals("Queso anyejo", agedBrie.getName());
+    }
+
+    @Test
+    public void backstage_limit_values_under_8(){
+        Item backStagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 6, 25);
+        Inventory inventory = createInventory(backStagePass);
+        inventory.updateQuality();
+        assertEquals(27, backStagePass.getQuality());
+    }
+
+    @Test
+    public void backstage_limit_values_8_12_quality50(){
+        Item backStagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 6, 50);
+        Inventory inventory = createInventory(backStagePass);
+        inventory.updateQuality();
+        assertEquals(50, backStagePass.getQuality());
+    }
+
+    @Test
+    public void backstage_limit_values_8_12_quality49(){
+        Item backStagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 6, 49);
+        Inventory inventory = createInventory(backStagePass);
+        inventory.updateQuality();
+        assertEquals(50, backStagePass.getQuality());
+    }
+
+    @Test
+    public void backstage_limit_values_9_12_quality50(){
+        Item backStagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 5, 50);
+        Inventory inventory = createInventory(backStagePass);
+        inventory.updateQuality();
+        assertEquals(50, backStagePass.getQuality());
+    }
+
+    @Test
+    public void backstage_limit_values_9_12_quality49(){
+        Item backStagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49);
+        Inventory inventory = createInventory(backStagePass);
+        inventory.updateQuality();
+        assertEquals(50, backStagePass.getQuality());
+    }
+
     //Iñigo
     @Test
     public void Backstage_limit_valor_9(){
