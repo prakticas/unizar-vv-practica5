@@ -210,6 +210,36 @@ public class InventoryTest {
         assertEquals(28, backStagePass.getQuality());
     }
 
+    @Test
+    public void Backstage_limit_valor_9_12(){
+
+        //quality 50
+        Item backStagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 1, 50);
+        Inventory inventory = createInventory(backStagePass);
+        inventory.updateQuality();
+        assertEquals(50, backStagePass.getQuality());
+
+        //quality 49
+        backStagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 1, 49);
+         inventory = createInventory(backStagePass);
+        inventory.updateQuality();
+        assertEquals(50, backStagePass.getQuality());
+
+        //quality 48
+       backStagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 1, 48);
+        inventory = createInventory(backStagePass);
+        inventory.updateQuality();
+        assertEquals(50, backStagePass.getQuality());
+    }
+
+
+    @Test
+    public void Backstage_limit_valor_3_10_12(){
+        Item backStagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 0, 25);
+        Inventory inventory = createInventory(backStagePass);
+        inventory.updateQuality();
+        assertEquals(0, backStagePass.getQuality());
+    }
 
 
 }
